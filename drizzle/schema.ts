@@ -13,3 +13,15 @@ export const sessions = sqliteTable('session', {
     .references(() => users.id),
   expiresAt: integer('expires_at').notNull(),
 });
+
+export const records = sqliteTable('records', {
+  id: integer('id').primaryKey(),
+  description: text('description').notNull(),
+  amount: integer('amount').notNull(),
+  type: text('type').notNull(),
+  date: text('date').notNull(),
+  category: text('category').notNull(),
+  userId: text('user_id')
+    .notNull()
+    .references(() => users.id),
+});
