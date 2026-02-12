@@ -13,12 +13,3 @@ export const sessions = sqliteTable('session', {
     .references(() => users.id),
   expiresAt: integer('expires_at').notNull(),
 });
-
-export const todos = sqliteTable('todos', {
-  id: integer('id').primaryKey(),
-  todo: text('todo').notNull(),
-  completed: integer('completed', { mode: 'boolean' }).notNull().default(false),
-  userId: text('user_id')
-    .notNull()
-    .references(() => users.id),
-});
