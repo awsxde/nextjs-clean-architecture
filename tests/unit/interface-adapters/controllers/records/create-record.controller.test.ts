@@ -1,0 +1,143 @@
+import { expect, it, vi } from 'vitest';
+
+import { getInjection } from '@/di/container';
+import { InputParseError } from '@/src/entities/errors/common';
+import { UnauthenticatedError } from '@/src/entities/errors/auth';
+
+const signInUseCase = getInjection('ISignInUseCase');
+const createRecordController = getInjection('ICreateRecordController');
+
+// A great guide on test names
+// https://www.epicweb.dev/talks/how-to-write-better-test-names
+it('creates record', async () => {
+  const { session } = await signInUseCase({
+    username: 'one',
+    password: 'password-one',
+  });
+
+  expect(
+    createRecordController(
+      {
+        description: 'Test application',
+        amount: 1000,
+        type: 'income',
+        date: '2026-02-08T17:47:31.306Z',
+        category: 'salary',
+      },
+      session.id
+    )
+  ).resolves.toMatchObject([
+    {
+      description: 'Test application',
+      amount: 1000,
+      type: 'income',
+      date: '2026-02-08T17:47:31.306Z',
+      category: 'salary',
+      userId: '1',
+    },
+  ]);
+});
+
+it('throws for invalid input', async () => {
+  const { session } = await signInUseCase({
+    username: 'one',
+    password: 'password-one',
+  });
+
+  expect(createRecordController({}, session.id)).rejects.toBeInstanceOf(
+    InputParseError
+  );
+
+  expect(
+    createRecordController(
+      {
+        description: '',
+        amount: 1000,
+        type: 'income',
+        date: '2026-02-08T17:47:31.306Z',
+        category: 'salary',
+      },
+      session.id
+    )
+  ).rejects.toBeInstanceOf(InputParseError);
+
+  expect(
+    createRecordController(
+      {
+        description: 'Test application',
+        amount: -10,
+        type: '',
+        date: '2026-02-08T17:47:31.306Z',
+        category: 'salary',
+      },
+      session.id
+    )
+  ).rejects.toBeInstanceOf(InputParseError);
+
+  expect(
+    createRecordController(
+      {
+        description: 'Test application',
+        amount: 0,
+        type: '',
+        date: '2026-02-08T17:47:31.306Z',
+        category: 'salary',
+      },
+      session.id
+    )
+  ).rejects.toBeInstanceOf(InputParseError);
+
+  expect(
+    createRecordController(
+      {
+        description: 'Test application',
+        amount: 1000,
+        type: '',
+        date: '2026-02-08T17:47:31.306Z',
+        category: 'salary',
+      },
+      session.id
+    )
+  ).rejects.toBeInstanceOf(InputParseError);
+
+  expect(
+    createRecordController(
+      {
+        description: 'Test application',
+        amount: 1000,
+        type: 'income',
+        date: '',
+        category: 'salary',
+      },
+      session.id
+    )
+  ).rejects.toBeInstanceOf(InputParseError);
+
+  expect(
+    createRecordController(
+      {
+        description: 'Test application',
+        amount: 1000,
+        type: 'income',
+        date: '2026-02-08T17:47:31.306Z',
+        category: '',
+      },
+      session.id
+    )
+  ).rejects.toBeInstanceOf(InputParseError);
+});
+
+it('throws for unauthenticated', () => {
+  expect(
+    createRecordController(
+      {
+        description: "Doesn't matter",
+        amount: 1000,
+        type: 'income',
+        date: '2026-02-08T17:47:31.306Z',
+        category: 'salary',
+      },
+      undefined
+    )
+  ).rejects.toBeInstanceOf(UnauthenticatedError);
+});
