@@ -3,8 +3,12 @@ import { ITransactionManagerService } from '@/src/application/services/transacti
 import { IInstrumentationService } from '@/src/application/services/instrumentation.service.interface';
 import { ICrashReporterService } from '@/src/application/services/crash-reporter.service.interface';
 
+import { IRecordsRepository } from '@/src/application/repositories/records.repository.interface';
 import { IUsersRepository } from '@/src/application/repositories/users.repository.interface';
 
+import { ICreateRecordUseCase } from '@/src/application/use-cases/records/create-record.use-case';
+import { IDeleteRecordUseCase } from '@/src/application/use-cases/records/delete-record.use-case';
+import { IGetRecordsForUserUseCase } from '@/src/application/use-cases/records/get-records-for-user.use-case';
 import { ISignInUseCase } from '@/src/application/use-cases/auth/sign-in.use-case';
 import { ISignUpUseCase } from '@/src/application/use-cases/auth/sign-up.use-case';
 import { ISignOutUseCase } from '@/src/application/use-cases/auth/sign-out.use-case';
@@ -12,6 +16,8 @@ import { ISignOutUseCase } from '@/src/application/use-cases/auth/sign-out.use-c
 import { ISignInController } from '@/src/interface-adapters/controllers/auth/sign-in.controller';
 import { ISignOutController } from '@/src/interface-adapters/controllers/auth/sign-out.controller';
 import { ISignUpController } from '@/src/interface-adapters/controllers/auth/sign-up.controller';
+import { ICreateRecordController } from '@/src/interface-adapters/controllers/records/create-record.controller';
+import { IGetRecordsForUserController } from '@/src/interface-adapters/controllers/records/get-records-for-user.controller';
 
 export const DI_SYMBOLS = {
   // Services
@@ -21,9 +27,13 @@ export const DI_SYMBOLS = {
   ICrashReporterService: Symbol.for('ICrashReporterService'),
 
   // Repositories
+  IRecordsRepository: Symbol.for('IRecordsRepository'),
   IUsersRepository: Symbol.for('IUsersRepository'),
 
   // Use Cases
+  ICreateRecordUseCase: Symbol.for('ICreateRecordUseCase'),
+  IDeleteRecordUseCase: Symbol.for('IDeleteRecordUseCase'),
+  IGetRecordsForUserUseCase: Symbol.for('IGetRecordsForUserUseCase'),
   ISignInUseCase: Symbol.for('ISignInUseCase'),
   ISignOutUseCase: Symbol.for('ISignOutUseCase'),
   ISignUpUseCase: Symbol.for('ISignUpUseCase'),
@@ -33,6 +43,8 @@ export const DI_SYMBOLS = {
   ISignOutController: Symbol.for('ISignOutController'),
   ISignUpController: Symbol.for('ISignUpController'),
   IBulkUpdateController: Symbol.for('IBulkUpdateController'),
+  ICreateRecordController: Symbol.for('ICreateRecordController'),
+  IGetRecordsForUserController: Symbol.for('IGetRecordsForUserController'),
 };
 
 export interface DI_RETURN_TYPES {
@@ -43,9 +55,13 @@ export interface DI_RETURN_TYPES {
   ICrashReporterService: ICrashReporterService;
 
   // Repositories
+  IRecordsRepository: IRecordsRepository;
   IUsersRepository: IUsersRepository;
 
   // Use Cases
+  ICreateRecordUseCase: ICreateRecordUseCase;
+  IDeleteRecordUseCase: IDeleteRecordUseCase;
+  IGetRecordsForUserUseCase: IGetRecordsForUserUseCase;
   ISignInUseCase: ISignInUseCase;
   ISignOutUseCase: ISignOutUseCase;
   ISignUpUseCase: ISignUpUseCase;
@@ -54,4 +70,6 @@ export interface DI_RETURN_TYPES {
   ISignInController: ISignInController;
   ISignOutController: ISignOutController;
   ISignUpController: ISignUpController;
+  ICreateRecordController: ICreateRecordController;
+  IGetRecordsForUserController: IGetRecordsForUserController;
 }
