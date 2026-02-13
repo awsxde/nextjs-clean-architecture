@@ -1,13 +1,18 @@
 import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { Inter as FontSans } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
 
-const fontSans = FontSans({
+const geistSans = Geist({
   subsets: ['latin'],
-  variable: '--font-sans',
+  variable: '--font-geist-sans',
+});
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
 });
 
 export const metadata: Metadata = {
@@ -25,7 +30,8 @@ export default async function RootLayout({
       <body
         className={cn(
           'min-h-screen font-sans antialiased flex items-center justify-center',
-          fontSans.variable
+          geistSans.variable,
+          geistMono.variable
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
