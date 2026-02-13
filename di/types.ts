@@ -32,7 +32,6 @@ export const DI_SYMBOLS = {
   ISignInController: Symbol.for('ISignInController'),
   ISignOutController: Symbol.for('ISignOutController'),
   ISignUpController: Symbol.for('ISignUpController'),
-  IBulkUpdateController: Symbol.for('IBulkUpdateController'),
 };
 
 export interface DI_RETURN_TYPES {
