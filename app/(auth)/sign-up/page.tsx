@@ -4,17 +4,17 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Loader } from 'lucide-react';
 
-import { Button } from '../../_components/ui/button';
+import { Button } from '@/app/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '../../_components/ui/card';
-import { Input } from '../../_components/ui/input';
-import { Label } from '../../_components/ui/label';
-import { Separator } from '../../_components/ui/separator';
+} from '@/app/components/ui/card';
+import { Input } from '@/app/components/ui/input';
+import { Label } from '@/app/components/ui/label';
+import { Separator } from '@/app/components/ui/separator';
 import { signUp } from '../actions';
 
 export default function SignUp() {
