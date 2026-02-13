@@ -18,6 +18,7 @@ export async function signUp(formData: FormData) {
     'signUp',
     { recordResponse: true },
     async () => {
+      const cookieStore = await cookies();
       const username = formData.get('username')?.toString();
       const password = formData.get('password')?.toString();
       const confirmPassword = formData.get('confirm_password')?.toString();
@@ -53,7 +54,7 @@ export async function signUp(formData: FormData) {
         };
       }
 
-      cookies().set(
+      cookieStore.set(
         sessionCookie.name,
         sessionCookie.value,
         sessionCookie.attributes
@@ -70,6 +71,7 @@ export async function signIn(formData: FormData) {
     'signIn',
     { recordResponse: true },
     async () => {
+      const cookieStore = await cookies();
       const username = formData.get('username')?.toString();
       const password = formData.get('password')?.toString();
 
@@ -94,7 +96,7 @@ export async function signIn(formData: FormData) {
         };
       }
 
-      cookies().set(
+      cookieStore.set(
         sessionCookie.name,
         sessionCookie.value,
         sessionCookie.attributes
@@ -111,8 +113,8 @@ export async function signOut() {
     'signOut',
     { recordResponse: true },
     async () => {
-      const cookiesStore = cookies();
-      const sessionId = cookiesStore.get(SESSION_COOKIE)?.value;
+      const cookieStore = await cookies();
+      const sessionId = cookieStore.get(SESSION_COOKIE)?.value;
 
       let blankCookie: Cookie;
       try {
@@ -130,7 +132,7 @@ export async function signOut() {
         throw err;
       }
 
-      cookies().set(
+      cookieStore.set(
         blankCookie.name,
         blankCookie.value,
         blankCookie.attributes
