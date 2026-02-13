@@ -42,7 +42,6 @@ export const DI_SYMBOLS = {
   ISignInController: Symbol.for('ISignInController'),
   ISignOutController: Symbol.for('ISignOutController'),
   ISignUpController: Symbol.for('ISignUpController'),
-  IBulkUpdateController: Symbol.for('IBulkUpdateController'),
   ICreateRecordController: Symbol.for('ICreateRecordController'),
   IGetRecordsForUserController: Symbol.for('IGetRecordsForUserController'),
 };
