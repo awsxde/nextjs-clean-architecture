@@ -13,7 +13,7 @@ it('creates record', async () => {
     password: 'password-one',
   });
 
-  expect(
+  await expect(
     createRecordUseCase(
       {
         description: 'Write unit tests',

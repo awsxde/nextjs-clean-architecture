@@ -13,7 +13,9 @@ it('returns records', async () => {
     username: 'one',
     password: 'password-one',
   });
-  expect(getRecordsForUserUseCase(session.userId)).resolves.toHaveLength(0);
+  await expect(getRecordsForUserUseCase(session.userId)).resolves.toHaveLength(
+    0
+  );
 
   await createRecordUseCase(
     {
@@ -46,30 +48,32 @@ it('returns records', async () => {
     session.userId
   );
 
-  expect(getRecordsForUserUseCase(session.userId)).resolves.toMatchObject([
-    {
-      description: 'record-one',
-      amount: 1000,
-      type: 'income',
-      date: '2026-02-08T17:47:31.306Z',
-      category: 'salary',
-      userId: '1',
-    },
-    {
-      description: 'record-two',
-      amount: 2000,
-      type: 'income',
-      date: '2026-02-08T17:47:31.306Z',
-      category: 'salary',
-      userId: '1',
-    },
-    {
-      description: 'record-three',
-      amount: 3000,
-      type: 'income',
-      date: '2026-02-08T17:47:31.306Z',
-      category: 'salary',
-      userId: '1',
-    },
-  ]);
+  await expect(getRecordsForUserUseCase(session.userId)).resolves.toMatchObject(
+    [
+      {
+        description: 'record-one',
+        amount: 1000,
+        type: 'income',
+        date: '2026-02-08T17:47:31.306Z',
+        category: 'salary',
+        userId: '1',
+      },
+      {
+        description: 'record-two',
+        amount: 2000,
+        type: 'income',
+        date: '2026-02-08T17:47:31.306Z',
+        category: 'salary',
+        userId: '1',
+      },
+      {
+        description: 'record-three',
+        amount: 3000,
+        type: 'income',
+        date: '2026-02-08T17:47:31.306Z',
+        category: 'salary',
+        userId: '1',
+      },
+    ]
+  );
 });

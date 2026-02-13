@@ -17,8 +17,8 @@ it('returns session and cookie', async () => {
   expect(result).toHaveProperty('user');
 });
 
-it('throws for invalid input', () => {
-  expect(() =>
+it('throws for invalid input', async () => {
+  await expect(() =>
     signUpUseCase({ username: 'one', password: 'doesntmatter' })
   ).rejects.toBeInstanceOf(AuthenticationError);
 });

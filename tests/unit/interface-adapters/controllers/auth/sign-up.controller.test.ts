@@ -24,12 +24,12 @@ it('returns cookie', async () => {
   });
 });
 
-it('throws for invalid input', () => {
+it('throws for invalid input', async () => {
   // empty object
-  expect(signUpController({})).rejects.toBeInstanceOf(InputParseError);
+  await expect(signUpController({})).rejects.toBeInstanceOf(InputParseError);
 
   // below min length
-  expect(
+  await expect(
     signUpController({
       username: 'no',
       password: 'no',
@@ -38,7 +38,7 @@ it('throws for invalid input', () => {
   ).rejects.toBeInstanceOf(InputParseError);
 
   // wrong passwords
-  expect(
+  await expect(
     signUpController({
       username: 'nikolovlazar',
       password: 'password',
@@ -47,8 +47,8 @@ it('throws for invalid input', () => {
   ).rejects.toBeInstanceOf(InputParseError);
 });
 
-it('throws for existing username', () => {
-  expect(
+it('throws for existing username', async () => {
+  await expect(
     signUpController({
       username: 'one',
       password: 'doesntmatter',

@@ -14,7 +14,7 @@ it('returns blank cookie', async () => {
     password: 'password-one',
   });
 
-  expect(signOutUseCase(session.id)).resolves.toMatchObject({
+  await expect(signOutUseCase(session.id)).resolves.toMatchObject({
     blankCookie: {
       name: SESSION_COOKIE,
       value: '',

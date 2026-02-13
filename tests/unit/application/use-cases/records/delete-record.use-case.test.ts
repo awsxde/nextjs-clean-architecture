@@ -71,7 +71,7 @@ it('throws when unauthorized', async () => {
     password: 'password-two',
   });
 
-  expect(
+  await expect(
     deleteRecordUseCase({ recordId: record.id }, sessionTwo.userId)
   ).rejects.toBeInstanceOf(UnauthorizedError);
 });
@@ -82,7 +82,7 @@ it('throws for invalid input', async () => {
     password: 'password-one',
   });
 
-  expect(
+  await expect(
     deleteRecordUseCase({ recordId: 1234567890 }, session.userId)
   ).rejects.toBeInstanceOf(NotFoundError);
 });

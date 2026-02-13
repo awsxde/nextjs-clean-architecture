@@ -15,7 +15,7 @@ it('creates record', async () => {
     password: 'password-one',
   });
 
-  expect(
+  await expect(
     createRecordController(
       {
         description: 'Test application',
@@ -44,11 +44,11 @@ it('throws for invalid input', async () => {
     password: 'password-one',
   });
 
-  expect(createRecordController({}, session.id)).rejects.toBeInstanceOf(
+  await expect(createRecordController({}, session.id)).rejects.toBeInstanceOf(
     InputParseError
   );
 
-  expect(
+  await expect(
     createRecordController(
       {
         description: '',
@@ -61,7 +61,7 @@ it('throws for invalid input', async () => {
     )
   ).rejects.toBeInstanceOf(InputParseError);
 
-  expect(
+  await expect(
     createRecordController(
       {
         description: 'Test application',
@@ -74,7 +74,7 @@ it('throws for invalid input', async () => {
     )
   ).rejects.toBeInstanceOf(InputParseError);
 
-  expect(
+  await expect(
     createRecordController(
       {
         description: 'Test application',
@@ -87,7 +87,7 @@ it('throws for invalid input', async () => {
     )
   ).rejects.toBeInstanceOf(InputParseError);
 
-  expect(
+  await expect(
     createRecordController(
       {
         description: 'Test application',
@@ -100,7 +100,7 @@ it('throws for invalid input', async () => {
     )
   ).rejects.toBeInstanceOf(InputParseError);
 
-  expect(
+  await expect(
     createRecordController(
       {
         description: 'Test application',
@@ -113,7 +113,7 @@ it('throws for invalid input', async () => {
     )
   ).rejects.toBeInstanceOf(InputParseError);
 
-  expect(
+  await expect(
     createRecordController(
       {
         description: 'Test application',
@@ -127,8 +127,8 @@ it('throws for invalid input', async () => {
   ).rejects.toBeInstanceOf(InputParseError);
 });
 
-it('throws for unauthenticated', () => {
-  expect(
+it('throws for unauthenticated', async () => {
+  await expect(
     createRecordController(
       {
         description: "Doesn't matter",

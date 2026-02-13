@@ -15,13 +15,15 @@ it('returns blank cookie', async () => {
     password: 'password-one',
   });
 
-  expect(signOutController(session.id)).resolves.toMatchObject({
+  await expect(signOutController(session.id)).resolves.toMatchObject({
     name: SESSION_COOKIE,
     value: '',
     attributes: {},
   });
 });
 
-it('throws for invalid input', () => {
-  expect(signOutController(undefined)).rejects.toBeInstanceOf(InputParseError);
+it('throws for invalid input', async () => {
+  await expect(signOutController(undefined)).rejects.toBeInstanceOf(
+    InputParseError
+  );
 });

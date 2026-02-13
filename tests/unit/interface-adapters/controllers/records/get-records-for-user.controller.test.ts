@@ -80,11 +80,11 @@ it('returns users records', async () => {
   ]);
 });
 
-it('throws when unauthenticated', () => {
-  expect(getRecordsForUserController('')).rejects.toBeInstanceOf(
+it('throws when unauthenticated', async () => {
+  await expect(getRecordsForUserController('')).rejects.toBeInstanceOf(
     UnauthenticatedError
   );
-  expect(getRecordsForUserController(undefined)).rejects.toBeInstanceOf(
+  await expect(getRecordsForUserController(undefined)).rejects.toBeInstanceOf(
     UnauthenticatedError
   );
 });
