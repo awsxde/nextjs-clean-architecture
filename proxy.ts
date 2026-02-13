@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { getInjection } from '@/di/container';
 import { SESSION_COOKIE } from '@/config';
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const isAuthPath =
     request.nextUrl.pathname === '/sign-in' ||
     request.nextUrl.pathname === '/sign-up';
