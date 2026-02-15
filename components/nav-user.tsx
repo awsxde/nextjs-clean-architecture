@@ -5,10 +5,7 @@ import {
   IconDotsVertical,
   IconLogout,
   IconUserCircle,
-  IconSun,
-  IconMoon,
 } from '@tabler/icons-react';
-import { useTheme } from 'next-themes';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
@@ -37,14 +34,6 @@ export function NavUser({
   };
 }) {
   const { isMobile } = useSidebar();
-  const { setTheme, resolvedTheme } = useTheme();
-
-  const toggleTheme = () => {
-    setTheme(resolvedTheme === 'light' ? 'dark' : 'light');
-  };
-
-  const ThemeIcon = resolvedTheme === 'light' ? IconMoon : IconSun;
-  const themeLabel = resolvedTheme === 'light' ? 'Dark mode' : 'Light mode';
 
   return (
     <SidebarMenu>
@@ -95,10 +84,6 @@ export function NavUser({
                   <IconUserCircle />
                   Account
                 </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={toggleTheme}>
-                <ThemeIcon />
-                {themeLabel}
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
