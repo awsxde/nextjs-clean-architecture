@@ -60,7 +60,7 @@ export async function signUp(formData: FormData) {
         sessionCookie.attributes
       );
 
-      redirect('/');
+      redirect('/dashboard');
     }
   );
 }
@@ -102,7 +102,7 @@ export async function signIn(formData: FormData) {
         sessionCookie.attributes
       );
 
-      redirect('/');
+      redirect('/dashboard');
     }
   );
 }
