@@ -18,6 +18,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import Image from 'next/image';
 
 const data = {
   navMain: [
@@ -53,10 +54,23 @@ export function AppSidebar({
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <a href="#">
-                <IconInnerShadowTop className="!size-5" />
-                <span className="text-base font-semibold">Acme Inc.</span>
-              </a>
+              <div className="flex items-center gap-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
+                  <Image
+                    src="/logo.svg" // path to your logo
+                    alt="Oink Wallet"
+                    width={32}
+                    height={32}
+                    className="rounded-lg"
+                  />
+                </div>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-semibold">Oink Wallet</span>
+                  <span className="truncate text-xs text-muted-foreground">
+                    Snout where your money goes
+                  </span>
+                </div>
+              </div>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
