@@ -1,4 +1,3 @@
-import { InputParseError } from '@/src/entities/errors/common';
 import type { Record } from '@/src/entities/models/record';
 import type { IInstrumentationService } from '@/src/application/services/instrumentation.service.interface';
 import type { IRecordsRepository } from '@/src/application/repositories/records.repository.interface';
@@ -24,10 +23,6 @@ export const createRecordUseCase =
     return instrumentationService.startSpan(
       { name: 'createRecord Use Case', op: 'function' },
       async () => {
-        if (input.description.length < 4) {
-          throw new InputParseError('Record must be at least 4 chars');
-        }
-
         const newRecord = await recordsRepository.createRecord(
           {
             description: input.description,
