@@ -9,13 +9,14 @@ import { IAuthenticationService } from '@/src/application/services/authenticatio
 import { ITransactionManagerService } from '@/src/application/services/transaction-manager.service.interface';
 
 function presenter(
-  records: Record[],
+  record: Record | null,
   instrumentationService: IInstrumentationService
 ) {
   return instrumentationService.startSpan(
     { name: 'createRecord Presenter', op: 'serialize' },
     () => {
-      return records.map((record) => ({
+      if (!record) return null;
+      return {
         id: record.id,
         description: record.description,
         amount: record.amount,
@@ -23,7 +24,7 @@ function presenter(
         date: record.date,
         category: record.category,
         userId: record.userId,
-      }));
+      };
     }
   );
 }
@@ -67,31 +68,29 @@ export const createRecordController =
           throw new InputParseError('Invalid data', { cause: inputParseError });
         }
 
-        const records = await instrumentationService.startSpan(
+        const record = await instrumentationService.startSpan(
           { name: 'Create Record Transaction' },
           async () =>
             transactionManagerService.startTransaction(async (tx) => {
               try {
-                return await Promise.all([
-                  createRecordUseCase(
-                    {
-                      description: data.description,
-                      amount: data.amount,
-                      type: data.type,
-                      date: data.date,
-                      category: data.category,
-                    },
-                    user.id,
-                    tx
-                  ),
-                ]);
+                return await createRecordUseCase(
+                  {
+                    description: data.description,
+                    amount: data.amount,
+                    type: data.type,
+                    date: data.date,
+                    category: data.category,
+                  },
+                  user.id,
+                  tx
+                );
               } catch (err) {
                 console.error('Rolling back!');
                 tx.rollback();
               }
             })
         );
-        return presenter(records ?? [], instrumentationService);
+        return presenter(record ?? null, instrumentationService);
       }
     );
   };
