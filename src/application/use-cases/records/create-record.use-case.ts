@@ -1,4 +1,5 @@
 import type { Record } from '@/src/entities/models/record';
+import type { ITransaction } from '@/src/entities/models/transaction.interface';
 import type { IInstrumentationService } from '@/src/application/services/instrumentation.service.interface';
 import type { IRecordsRepository } from '@/src/application/repositories/records.repository.interface';
 
@@ -18,7 +19,7 @@ export const createRecordUseCase =
       category: string;
     },
     userId: string,
-    tx?: any
+    tx?: ITransaction
   ): Promise<Record> => {
     return instrumentationService.startSpan(
       { name: 'createRecord Use Case', op: 'function' },
