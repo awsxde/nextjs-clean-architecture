@@ -4,7 +4,7 @@ import { ColumnDef } from '@tanstack/react-table';
 
 import { types, categories } from '@/constants/record';
 import { DataTableColumnHeader } from '@/components/data-table-column-header';
-import { DataTableRowActions } from '@/components/data-table-row-actions';
+import { DataTableRowActions } from '@/app/dashboard/record/components/data-table-row-actions';
 import { Record } from '@/src/entities/models/record';
 
 export const columns: ColumnDef<Record>[] = [
