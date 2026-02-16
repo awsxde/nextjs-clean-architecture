@@ -2,7 +2,7 @@
 
 import { ColumnDef } from '@tanstack/react-table';
 
-import { types, categories } from '@/app/dashboard/record/data/data';
+import { types, categories } from '@/constants/record';
 import { DataTableColumnHeader } from '@/components/data-table-column-header';
 import { DataTableRowActions } from '@/components/data-table-row-actions';
 import { Record } from '@/src/entities/models/record';
