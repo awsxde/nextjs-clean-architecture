@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { IconChartBar, IconDashboard } from '@tabler/icons-react';
+import { IconChartBar, IconDashboard, IconReceipt } from '@tabler/icons-react';
 
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
@@ -22,6 +22,11 @@ const data = {
       title: 'Dashboard',
       url: '#',
       icon: IconDashboard,
+    },
+    {
+      title: 'Record',
+      url: '/dashboard/record',
+      icon: IconReceipt,
     },
     {
       title: 'Analytics',
