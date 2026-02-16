@@ -89,6 +89,7 @@ export const updateRecordController =
               } catch (err) {
                 console.error('Rolling back!');
                 tx.rollback();
+                throw err;
               }
             })
         );
