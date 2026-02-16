@@ -4,6 +4,7 @@ import { MockRecordsRepository } from '@/src/infrastructure/repositories/records
 import { RecordsRepository } from '@/src/infrastructure/repositories/records.repository';
 
 import { createRecordUseCase } from '@/src/application/use-cases/records/create-record.use-case';
+import { updateRecordUseCase } from '@/src/application/use-cases/records/update-record.use-case';
 import { deleteRecordUseCase } from '@/src/application/use-cases/records/delete-record.use-case';
 import { getRecordsForUserUseCase } from '@/src/application/use-cases/records/get-records-for-user.use-case';
 
@@ -32,6 +33,13 @@ export function createRecordsModule() {
   recordsModule
     .bind(DI_SYMBOLS.ICreateRecordUseCase)
     .toHigherOrderFunction(createRecordUseCase, [
+      DI_SYMBOLS.IInstrumentationService,
+      DI_SYMBOLS.IRecordsRepository,
+    ]);
+
+  recordsModule
+    .bind(DI_SYMBOLS.IUpdateRecordUseCase)
+    .toHigherOrderFunction(updateRecordUseCase, [
       DI_SYMBOLS.IInstrumentationService,
       DI_SYMBOLS.IRecordsRepository,
     ]);

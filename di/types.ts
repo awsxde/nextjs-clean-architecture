@@ -7,6 +7,7 @@ import { IRecordsRepository } from '@/src/application/repositories/records.repos
 import { IUsersRepository } from '@/src/application/repositories/users.repository.interface';
 
 import { ICreateRecordUseCase } from '@/src/application/use-cases/records/create-record.use-case';
+import { IUpdateRecordUseCase } from '@/src/application/use-cases/records/update-record.use-case';
 import { IDeleteRecordUseCase } from '@/src/application/use-cases/records/delete-record.use-case';
 import { IGetRecordsForUserUseCase } from '@/src/application/use-cases/records/get-records-for-user.use-case';
 import { ISignInUseCase } from '@/src/application/use-cases/auth/sign-in.use-case';
@@ -33,6 +34,7 @@ export const DI_SYMBOLS = {
 
   // Use Cases
   ICreateRecordUseCase: Symbol.for('ICreateRecordUseCase'),
+  IUpdateRecordUseCase: Symbol.for('IUpdateRecordUseCase'),
   IDeleteRecordUseCase: Symbol.for('IDeleteRecordUseCase'),
   IGetRecordsForUserUseCase: Symbol.for('IGetRecordsForUserUseCase'),
   ISignInUseCase: Symbol.for('ISignInUseCase'),
@@ -61,6 +63,7 @@ export interface DI_RETURN_TYPES {
 
   // Use Cases
   ICreateRecordUseCase: ICreateRecordUseCase;
+  IUpdateRecordUseCase: IUpdateRecordUseCase;
   IDeleteRecordUseCase: IDeleteRecordUseCase;
   IGetRecordsForUserUseCase: IGetRecordsForUserUseCase;
   ISignInUseCase: ISignInUseCase;
