@@ -9,7 +9,7 @@ export class MockRecordsRepository implements IRecordsRepository {
   }
 
   async createRecord(record: RecordInsert): Promise<Record> {
-    const id = this._records.length;
+    const id = this._records.length + 1;
     const created = { ...record, id };
     this._records.push(created);
     return created;
