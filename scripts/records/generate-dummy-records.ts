@@ -1,40 +1,40 @@
 import { RecordInsert } from '@/src/entities/models/record';
 
 const categories = [
-  'Salary',
-  'Freelance',
-  'Investment',
-  'Gift',
-  'Food',
-  'Transport',
-  'Utilities',
-  'Entertainment',
-  'Health',
-  'Education',
-  'Shopping',
-  'Travel',
-  'Rent',
+  'salary',
+  'freelance',
+  'investment',
+  'gift',
+  'food',
+  'transport',
+  'utilities',
+  'entertainment',
+  'health',
+  'education',
+  'shopping',
+  'travel',
+  'rent',
 ];
 
-const incomeCategories = ['Salary', 'Freelance', 'Investment', 'Gift'];
+const incomeCategories = ['salary', 'freelance', 'investment', 'gift'];
 const expenseCategories = categories.filter(
   (c) => !incomeCategories.includes(c)
 );
 
 const descriptions = {
-  Salary: ['Monthly salary', 'Bonus', 'Commission'],
-  Freelance: ['Web design project', 'Consulting', 'Writing gig'],
-  Investment: ['Dividend', 'Stock profit', 'Interest'],
-  Gift: ['Birthday gift', 'Holiday gift'],
-  Food: ['Groceries', 'Restaurant', 'Coffee', 'Takeout'],
-  Transport: ['Fuel', 'Uber', 'Bus fare', 'Parking'],
-  Utilities: ['Electricity bill', 'Water bill', 'Internet', 'Phone'],
-  Entertainment: ['Movie', 'Concert', 'Netflix', 'Spotify'],
-  Health: ['Gym', 'Doctor', 'Pharmacy', 'Therapy'],
-  Education: ['Tuition', 'Books', 'Online course'],
-  Shopping: ['Clothes', 'Electronics', 'Home goods'],
-  Travel: ['Flight', 'Hotel', 'Rental car'],
-  Rent: ['Monthly rent', 'Maintenance fee'],
+  salary: ['Monthly salary', 'Bonus', 'Commission'],
+  freelance: ['Web design project', 'Consulting', 'Writing gig'],
+  investment: ['Dividend', 'Stock profit', 'Interest'],
+  gift: ['Birthday gift', 'Holiday gift'],
+  food: ['Groceries', 'Restaurant', 'Coffee', 'Takeout'],
+  transport: ['Fuel', 'Uber', 'Bus fare', 'Parking'],
+  utilities: ['Electricity bill', 'Water bill', 'Internet', 'Phone'],
+  entertainment: ['Movie', 'Concert', 'Netflix', 'Spotify'],
+  health: ['Gym', 'Doctor', 'Pharmacy', 'Therapy'],
+  education: ['Tuition', 'Books', 'Online course'],
+  shopping: ['Clothes', 'Electronics', 'Home goods'],
+  travel: ['Flight', 'Hotel', 'Rental car'],
+  rent: ['Monthly rent', 'Maintenance fee'],
 };
 
 function randomDate(start: Date, end: Date): string {
