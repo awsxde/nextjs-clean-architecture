@@ -77,6 +77,7 @@ export const deleteRecordController =
               } catch (err) {
                 console.error('Rolling back!');
                 tx.rollback();
+                throw err;
               }
             })
         );
