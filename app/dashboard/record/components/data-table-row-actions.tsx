@@ -1,8 +1,9 @@
 'use client';
 
 import { Row } from '@tanstack/react-table';
-import { MoreHorizontal } from 'lucide-react';
-
+import { useState } from 'react';
+import { Loader, MoreHorizontal } from 'lucide-react';
+import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -12,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { selectRecordSchema } from '@/src/entities/models/record';
+import { deleteRecord } from '../actions';
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -21,6 +23,23 @@ export function DataTableRowActions<TData>({
   row,
 }: DataTableRowActionsProps<TData>) {
   const record = selectRecordSchema.parse(row.original);
+  const [loading, setLoading] = useState(false);
+
+  const handleDelete = async () => {
+    if (loading) return;
+
+    setLoading(true);
+    const res = await deleteRecord(record.id);
+
+    if (res) {
+      if (res.error) {
+        toast.error(res.error);
+      } else if (res.success) {
+        toast.success('record deleted!');
+      }
+    }
+    setLoading(false);
+  };
 
   return (
     <DropdownMenu>
@@ -36,7 +55,9 @@ export function DataTableRowActions<TData>({
       <DropdownMenuContent align="end" className="w-[160px]">
         <DropdownMenuItem>Edit</DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Delete</DropdownMenuItem>
+        <DropdownMenuItem onClick={handleDelete}>
+          {loading ? <Loader className="animate-spin" /> : 'Delete'}
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
