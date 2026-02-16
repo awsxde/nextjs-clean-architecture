@@ -8,6 +8,7 @@ import { deleteRecordUseCase } from '@/src/application/use-cases/records/delete-
 import { getRecordsForUserUseCase } from '@/src/application/use-cases/records/get-records-for-user.use-case';
 
 import { createRecordController } from '@/src/interface-adapters/controllers/records/create-record.controller';
+import { deleteRecordController } from '@/src/interface-adapters/controllers/records/delete-record.controller';
 import { getRecordsForUserController } from '@/src/interface-adapters/controllers/records/get-records-for-user.controller';
 
 import { DI_SYMBOLS } from '@/di/types';
@@ -56,6 +57,15 @@ export function createRecordsModule() {
       DI_SYMBOLS.IAuthenticationService,
       DI_SYMBOLS.ITransactionManagerService,
       DI_SYMBOLS.ICreateRecordUseCase,
+    ]);
+
+  recordsModule
+    .bind(DI_SYMBOLS.IDeleteRecordController)
+    .toHigherOrderFunction(deleteRecordController, [
+      DI_SYMBOLS.IInstrumentationService,
+      DI_SYMBOLS.IAuthenticationService,
+      DI_SYMBOLS.ITransactionManagerService,
+      DI_SYMBOLS.IDeleteRecordUseCase,
     ]);
 
   recordsModule
