@@ -2,12 +2,14 @@
 
 import { Table } from '@tanstack/react-table';
 import { X } from 'lucide-react';
+import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
 import { types, categories } from '@/constants/record';
 import { DataTableFacetedFilter } from '@/components/data-table-faceted-filter';
+import { IconPlus } from '@tabler/icons-react';
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -56,6 +58,12 @@ export function DataTableToolbar<TData>({
           </Button>
         )}
       </div>
+      <Link href="/dashboard/record/new">
+        <Button variant="outline" size="sm">
+          <IconPlus />
+          <span className="hidden lg:inline">Add Record</span>
+        </Button>
+      </Link>
     </div>
   );
 }
