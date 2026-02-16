@@ -89,15 +89,18 @@ export async function deleteRecord(recordId: number) {
         const deleteRecordController = getInjection('IDeleteRecordController');
         await deleteRecordController({ recordId }, sessionId);
       } catch (err) {
-        if (
-          err instanceof UnauthenticatedError ||
-          err instanceof AuthenticationError
-        ) {
-          redirect('/sign-in');
+        if (err instanceof InputParseError) {
+          return { error: err.message };
+        }
+        if (err instanceof UnauthenticatedError) {
+          return { error: 'Must be logged in to delete a record' };
         }
         const crashReporterService = getInjection('ICrashReporterService');
         crashReporterService.report(err);
-        throw err;
+        return {
+          error:
+            'An error happened while deleting a record. The developers have been notified. Please try again later.',
+        };
       }
 
       revalidatePath('/dashboard/record');
