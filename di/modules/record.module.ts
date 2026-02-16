@@ -68,6 +68,15 @@ export function createRecordsModule() {
     ]);
 
   recordsModule
+    .bind(DI_SYMBOLS.IUpdateRecordController)
+    .toHigherOrderFunction(createRecordController, [
+      DI_SYMBOLS.IInstrumentationService,
+      DI_SYMBOLS.IAuthenticationService,
+      DI_SYMBOLS.ITransactionManagerService,
+      DI_SYMBOLS.IUpdateRecordUseCase,
+    ]);
+
+  recordsModule
     .bind(DI_SYMBOLS.IDeleteRecordController)
     .toHigherOrderFunction(deleteRecordController, [
       DI_SYMBOLS.IInstrumentationService,

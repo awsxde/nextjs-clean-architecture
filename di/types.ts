@@ -18,6 +18,7 @@ import { ISignInController } from '@/src/interface-adapters/controllers/auth/sig
 import { ISignOutController } from '@/src/interface-adapters/controllers/auth/sign-out.controller';
 import { ISignUpController } from '@/src/interface-adapters/controllers/auth/sign-up.controller';
 import { ICreateRecordController } from '@/src/interface-adapters/controllers/records/create-record.controller';
+import { IUpdateRecordController } from '@/src/interface-adapters/controllers/records/update-record.controller';
 import { IDeleteRecordController } from '@/src/interface-adapters/controllers/records/delete-record.controller';
 import { IGetRecordsForUserController } from '@/src/interface-adapters/controllers/records/get-records-for-user.controller';
 
@@ -46,6 +47,7 @@ export const DI_SYMBOLS = {
   ISignOutController: Symbol.for('ISignOutController'),
   ISignUpController: Symbol.for('ISignUpController'),
   ICreateRecordController: Symbol.for('ICreateRecordController'),
+  IUpdateRecordController: Symbol.for('IUpdateRecordController'),
   IDeleteRecordController: Symbol.for('IDeleteRecordController'),
   IGetRecordsForUserController: Symbol.for('IGetRecordsForUserController'),
 };
@@ -75,6 +77,7 @@ export interface DI_RETURN_TYPES {
   ISignOutController: ISignOutController;
   ISignUpController: ISignUpController;
   ICreateRecordController: ICreateRecordController;
+  IUpdateRecordController: IUpdateRecordController;
   IDeleteRecordController: IDeleteRecordController;
   IGetRecordsForUserController: IGetRecordsForUserController;
 }
