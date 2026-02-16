@@ -21,7 +21,7 @@ it('creates record', async () => {
         description: 'Test application',
         amount: 1000,
         type: 'income',
-        date: '2026-02-08T17:47:31.306Z',
+        date: '2026-02-08',
         category: 'salary',
       },
       session.id
@@ -30,7 +30,7 @@ it('creates record', async () => {
     description: 'Test application',
     amount: 1000,
     type: 'income',
-    date: '2026-02-08T17:47:31.306Z',
+    date: '2026-02-08',
     category: 'salary',
     userId: '1',
   });
@@ -52,7 +52,7 @@ it('throws for invalid input', async () => {
         description: '',
         amount: 1000,
         type: 'income',
-        date: '2026-02-08T17:47:31.306Z',
+        date: '2026-02-08',
         category: 'salary',
       },
       session.id
@@ -65,7 +65,7 @@ it('throws for invalid input', async () => {
         description: 'Test application',
         amount: -10,
         type: '',
-        date: '2026-02-08T17:47:31.306Z',
+        date: '2026-02-08',
         category: 'salary',
       },
       session.id
@@ -78,7 +78,7 @@ it('throws for invalid input', async () => {
         description: 'Test application',
         amount: 0,
         type: '',
-        date: '2026-02-08T17:47:31.306Z',
+        date: '2026-02-08',
         category: 'salary',
       },
       session.id
@@ -91,7 +91,7 @@ it('throws for invalid input', async () => {
         description: 'Test application',
         amount: 1000,
         type: '',
-        date: '2026-02-08T17:47:31.306Z',
+        date: '2026-02-08',
         category: 'salary',
       },
       session.id
@@ -117,7 +117,7 @@ it('throws for invalid input', async () => {
         description: 'Test application',
         amount: 1000,
         type: 'income',
-        date: '2026-02-08T17:47:31.306Z',
+        date: '2026-02-08',
         category: '',
       },
       session.id
@@ -132,7 +132,7 @@ it('throws for unauthenticated', async () => {
         description: "Doesn't matter",
         amount: 1000,
         type: 'income',
-        date: '2026-02-08T17:47:31.306Z',
+        date: '2026-02-08',
         category: 'salary',
       },
       undefined

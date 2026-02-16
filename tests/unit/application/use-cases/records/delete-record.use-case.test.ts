@@ -23,7 +23,7 @@ it('deletes record', async () => {
       description: 'Write unit tests',
       amount: 1000,
       type: 'income',
-      date: '2026-02-08T17:47:31.306Z',
+      date: '2026-02-08',
       category: 'salary',
     },
     session.userId
@@ -36,7 +36,7 @@ it('deletes record', async () => {
     description: 'Write unit tests',
     amount: 1000,
     type: 'income',
-    date: '2026-02-08T17:47:31.306Z',
+    date: '2026-02-08',
     category: 'salary',
     userId: '1',
   });
@@ -58,7 +58,7 @@ it('throws when unauthorized', async () => {
       description: 'Write unit tests',
       amount: 1000,
       type: 'income',
-      date: '2026-02-08T17:47:31.306Z',
+      date: '2026-02-08',
       category: 'salary',
     },
     sessionOne.userId
