@@ -26,16 +26,14 @@ it('creates record', async () => {
       },
       session.id
     )
-  ).resolves.toMatchObject([
-    {
-      description: 'Test application',
-      amount: 1000,
-      type: 'income',
-      date: '2026-02-08T17:47:31.306Z',
-      category: 'salary',
-      userId: '1',
-    },
-  ]);
+  ).resolves.toMatchObject({
+    description: 'Test application',
+    amount: 1000,
+    type: 'income',
+    date: '2026-02-08T17:47:31.306Z',
+    category: 'salary',
+    userId: '1',
+  });
 });
 
 it('throws for invalid input', async () => {
