@@ -30,9 +30,9 @@ function presenter(
 }
 
 const inputSchema = z.object({
-  id: z.number().min(1),
+  id: z.coerce.number().min(1),
   description: z.string().min(1),
-  amount: z.number().positive(),
+  amount: z.coerce.number().positive(),
   type: z.string().min(1),
   date: z.string().min(1),
   category: z.string().min(1),
