@@ -13,6 +13,7 @@ import { createRecordController } from '@/src/interface-adapters/controllers/rec
 import { updateRecordController } from '@/src/interface-adapters/controllers/records/update-record.controller';
 import { deleteRecordController } from '@/src/interface-adapters/controllers/records/delete-record.controller';
 import { getRecordsForUserController } from '@/src/interface-adapters/controllers/records/get-records-for-user.controller';
+import { getRecordController } from '@/src/interface-adapters/controllers/records/get-record.controller';
 
 import { DI_SYMBOLS } from '@/di/types';
 
@@ -100,6 +101,14 @@ export function createRecordsModule() {
       DI_SYMBOLS.IInstrumentationService,
       DI_SYMBOLS.IAuthenticationService,
       DI_SYMBOLS.IGetRecordsForUserUseCase,
+    ]);
+
+  recordsModule
+    .bind(DI_SYMBOLS.IGetRecordController)
+    .toHigherOrderFunction(getRecordController, [
+      DI_SYMBOLS.IInstrumentationService,
+      DI_SYMBOLS.IAuthenticationService,
+      DI_SYMBOLS.IGetRecordUseCase,
     ]);
 
   return recordsModule;

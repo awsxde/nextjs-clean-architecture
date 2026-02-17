@@ -22,6 +22,7 @@ import { ICreateRecordController } from '@/src/interface-adapters/controllers/re
 import { IUpdateRecordController } from '@/src/interface-adapters/controllers/records/update-record.controller';
 import { IDeleteRecordController } from '@/src/interface-adapters/controllers/records/delete-record.controller';
 import { IGetRecordsForUserController } from '@/src/interface-adapters/controllers/records/get-records-for-user.controller';
+import { IGetRecordController } from '@/src/interface-adapters/controllers/records/get-record.controller';
 
 export const DI_SYMBOLS = {
   // Services
@@ -52,6 +53,7 @@ export const DI_SYMBOLS = {
   IUpdateRecordController: Symbol.for('IUpdateRecordController'),
   IDeleteRecordController: Symbol.for('IDeleteRecordController'),
   IGetRecordsForUserController: Symbol.for('IGetRecordsForUserController'),
+  IGetRecordController: Symbol.for('IGetRecordController'),
 };
 
 export interface DI_RETURN_TYPES {
@@ -83,4 +85,5 @@ export interface DI_RETURN_TYPES {
   IUpdateRecordController: IUpdateRecordController;
   IDeleteRecordController: IDeleteRecordController;
   IGetRecordsForUserController: IGetRecordsForUserController;
+  IGetRecordController: IGetRecordController;
 }
