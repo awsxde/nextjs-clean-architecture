@@ -7,6 +7,7 @@ import { format } from 'date-fns';
 import { CalendarIcon, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 import * as z from 'zod';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
@@ -56,6 +57,7 @@ type FormData = z.infer<typeof formSchema>;
 
 export function CreateRecord() {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const {
     control,
@@ -110,7 +112,7 @@ export function CreateRecord() {
         toast.error(res.error);
       } else if (res.success) {
         toast.success('Record created!');
-        reset();
+        router.push('/dashboard/record');
       }
     }
     setLoading(false);
