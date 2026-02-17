@@ -4,6 +4,7 @@ import { Row } from '@tanstack/react-table';
 import { useState } from 'react';
 import { Loader, MoreHorizontal } from 'lucide-react';
 import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -24,6 +25,11 @@ export function DataTableRowActions<TData>({
 }: DataTableRowActionsProps<TData>) {
   const record = selectRecordSchema.parse(row.original);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  const handleEdit = () => {
+    router.push(`/dashboard/record/${record.id}`);
+  };
 
   const handleDelete = async () => {
     if (loading) return;
@@ -53,7 +59,7 @@ export function DataTableRowActions<TData>({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
-        <DropdownMenuItem>Edit</DropdownMenuItem>
+        <DropdownMenuItem onClick={handleEdit}>Edit</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleDelete}>
           {loading ? <Loader className="animate-spin" /> : 'Delete'}
