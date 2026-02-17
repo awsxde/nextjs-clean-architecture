@@ -10,6 +10,7 @@ import { ICreateRecordUseCase } from '@/src/application/use-cases/records/create
 import { IUpdateRecordUseCase } from '@/src/application/use-cases/records/update-record.use-case';
 import { IDeleteRecordUseCase } from '@/src/application/use-cases/records/delete-record.use-case';
 import { IGetRecordsForUserUseCase } from '@/src/application/use-cases/records/get-records-for-user.use-case';
+import { IGetRecordUseCase } from '@/src/application/use-cases/records/get-record.use-case';
 import { ISignInUseCase } from '@/src/application/use-cases/auth/sign-in.use-case';
 import { ISignUpUseCase } from '@/src/application/use-cases/auth/sign-up.use-case';
 import { ISignOutUseCase } from '@/src/application/use-cases/auth/sign-out.use-case';
@@ -38,6 +39,7 @@ export const DI_SYMBOLS = {
   IUpdateRecordUseCase: Symbol.for('IUpdateRecordUseCase'),
   IDeleteRecordUseCase: Symbol.for('IDeleteRecordUseCase'),
   IGetRecordsForUserUseCase: Symbol.for('IGetRecordsForUserUseCase'),
+  IGetRecordUseCase: Symbol.for('IGetRecordUseCase'),
   ISignInUseCase: Symbol.for('ISignInUseCase'),
   ISignOutUseCase: Symbol.for('ISignOutUseCase'),
   ISignUpUseCase: Symbol.for('ISignUpUseCase'),
@@ -68,6 +70,7 @@ export interface DI_RETURN_TYPES {
   IUpdateRecordUseCase: IUpdateRecordUseCase;
   IDeleteRecordUseCase: IDeleteRecordUseCase;
   IGetRecordsForUserUseCase: IGetRecordsForUserUseCase;
+  IGetRecordUseCase: IGetRecordUseCase;
   ISignInUseCase: ISignInUseCase;
   ISignOutUseCase: ISignOutUseCase;
   ISignUpUseCase: ISignUpUseCase;

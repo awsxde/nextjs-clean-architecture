@@ -7,6 +7,7 @@ import { createRecordUseCase } from '@/src/application/use-cases/records/create-
 import { updateRecordUseCase } from '@/src/application/use-cases/records/update-record.use-case';
 import { deleteRecordUseCase } from '@/src/application/use-cases/records/delete-record.use-case';
 import { getRecordsForUserUseCase } from '@/src/application/use-cases/records/get-records-for-user.use-case';
+import { getRecordUseCase } from '@/src/application/use-cases/records/get-record.use-case';
 
 import { createRecordController } from '@/src/interface-adapters/controllers/records/create-record.controller';
 import { updateRecordController } from '@/src/interface-adapters/controllers/records/update-record.controller';
@@ -55,6 +56,13 @@ export function createRecordsModule() {
   recordsModule
     .bind(DI_SYMBOLS.IGetRecordsForUserUseCase)
     .toHigherOrderFunction(getRecordsForUserUseCase, [
+      DI_SYMBOLS.IInstrumentationService,
+      DI_SYMBOLS.IRecordsRepository,
+    ]);
+
+  recordsModule
+    .bind(DI_SYMBOLS.IGetRecordUseCase)
+    .toHigherOrderFunction(getRecordUseCase, [
       DI_SYMBOLS.IInstrumentationService,
       DI_SYMBOLS.IRecordsRepository,
     ]);
