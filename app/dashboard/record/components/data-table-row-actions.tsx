@@ -28,7 +28,7 @@ export function DataTableRowActions<TData>({
   const router = useRouter();
 
   const handleEdit = () => {
-    router.push(`/dashboard/record/${record.id}`);
+    router.push(`/dashboard/record/${record.id}/edit`);
   };
 
   const handleDelete = async () => {
