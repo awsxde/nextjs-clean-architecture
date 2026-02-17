@@ -17,12 +17,12 @@ it('returns session and cookie', async () => {
   expect(result.session.userId).toBe('1');
 });
 
-it('throws for invalid input', () => {
-  expect(() =>
+it('throws for invalid input', async () => {
+  await expect(() =>
     signInUseCase({ username: 'non-existing', password: 'doesntmatter' })
   ).rejects.toBeInstanceOf(AuthenticationError);
 
-  expect(() =>
+  await expect(() =>
     signInUseCase({ username: 'one', password: 'password-two' })
   ).rejects.toBeInstanceOf(AuthenticationError);
 });

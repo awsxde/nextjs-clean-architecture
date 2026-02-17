@@ -4,7 +4,7 @@ import { ExtractTablesWithRelations } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/libsql';
 import { SQLiteTransaction } from 'drizzle-orm/sqlite-core';
 
-import { sessions, users } from './schema';
+import { sessions, users, records } from './schema';
 
 // Setup sqlite database connection
 const client = createClient({
@@ -12,7 +12,7 @@ const client = createClient({
   authToken: process.env.DATABASE_AUTH_TOKEN,
 });
 export const db = drizzle(client, {
-  schema: { users, sessions },
+  schema: { users, sessions, records },
 });
 
 // Setup lucia adapter
@@ -22,6 +22,7 @@ export const luciaAdapter = new DrizzleSQLiteAdapter(db, sessions, users);
 type Schema = {
   users: typeof users;
   sessions: typeof sessions;
+  records: typeof records;
 };
 export type Transaction = SQLiteTransaction<
   'async',
