@@ -23,8 +23,8 @@ export default async function DashboardLayout({
     const { user } = await authService.validateSession(sessionId);
 
     const safeUser = {
-      name: user.username.split('@')[0] || 'User',
-      email: user.username,
+      username: user.username,
+      email: user.email,
       avatar: '',
     };
 
