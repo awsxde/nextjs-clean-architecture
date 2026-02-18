@@ -11,7 +11,8 @@ const signUpController = getInjection('ISignUpController');
 // https://www.epicweb.dev/talks/how-to-write-better-test-names
 it('returns cookie', async () => {
   const { cookie, user } = await signUpController({
-    username: 'nikolovlazar',
+    email: 'new@gmail.com',
+    username: 'username',
     password: 'password',
     confirm_password: 'password',
   });
@@ -31,6 +32,7 @@ it('throws for invalid input', async () => {
   // below min length
   await expect(
     signUpController({
+      email: '',
       username: 'no',
       password: 'no',
       confirm_password: 'nah',
@@ -40,7 +42,8 @@ it('throws for invalid input', async () => {
   // wrong passwords
   await expect(
     signUpController({
-      username: 'nikolovlazar',
+      email: 'gmail@gmail.com',
+      username: 'username',
       password: 'password',
       confirm_password: 'passwords',
     })
@@ -50,6 +53,18 @@ it('throws for invalid input', async () => {
 it('throws for existing username', async () => {
   await expect(
     signUpController({
+      email: 'email@gmail.com',
+      username: 'one',
+      password: 'doesntmatter',
+      confirm_password: 'doesntmatter',
+    })
+  ).rejects.toBeInstanceOf(AuthenticationError);
+});
+
+it('throws for existing email', async () => {
+  await expect(
+    signUpController({
+      email: 'new@gmail.com',
       username: 'one',
       password: 'doesntmatter',
       confirm_password: 'doesntmatter',
