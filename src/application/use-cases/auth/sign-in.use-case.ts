@@ -28,6 +28,13 @@ export const signInUseCase =
           throw new AuthenticationError('User does not exist');
         }
 
+        // If the user has no password (OAuth user), they cannot sign in with password
+        if (!existingUser.password_hash) {
+          throw new AuthenticationError(
+            'This account uses social login. Please sign in with GitHub or Google.'
+          );
+        }
+
         const validPassword = await authenticationService.validatePasswords(
           input.password,
           existingUser.password_hash
