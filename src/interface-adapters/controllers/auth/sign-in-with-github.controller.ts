@@ -5,7 +5,7 @@ import { Cookie } from '@/src/entities/models/cookie';
 import type { IInstrumentationService } from '@/src/application/services/instrumentation.service.interface';
 
 const inputSchema = z.object({
-  githubId: z.string(),
+  githubId: z.string().min(1),
   email: z.string().email(),
   username: z.string().min(1),
 });
