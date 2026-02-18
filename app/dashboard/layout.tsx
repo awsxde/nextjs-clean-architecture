@@ -25,7 +25,7 @@ export default async function DashboardLayout({
     const safeUser = {
       username: user.username,
       email: user.email,
-      avatar: '',
+      avatar: `https://api.dicebear.com/9.x/identicon/svg?seed=${encodeURIComponent(user.email)}`,
     };
 
     return (
