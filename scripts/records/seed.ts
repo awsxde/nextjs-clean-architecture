@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { getInjection } from '@/di/container';
 import { generateDummyRecords } from './generate-dummy-records';
 import { AuthenticationError } from '@/src/entities/errors/auth';

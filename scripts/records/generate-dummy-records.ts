@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { RecordInsert } from '@/src/entities/models/record';
 
 const categories = [
