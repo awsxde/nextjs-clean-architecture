@@ -4,6 +4,7 @@ import { AuthenticationService } from '@/src/infrastructure/services/authenticat
 import { MockAuthenticationService } from '@/src/infrastructure/services/authentication.service.mock';
 
 import { signInUseCase } from '@/src/application/use-cases/auth/sign-in.use-case';
+import { signInWithGithubUseCase } from '@/src/application/use-cases/auth/sign-in-with-github.use-case';
 import { signUpUseCase } from '@/src/application/use-cases/auth/sign-up.use-case';
 import { signOutUseCase } from '@/src/application/use-cases/auth/sign-out.use-case';
 
@@ -32,6 +33,14 @@ export function createAuthenticationModule() {
   authenticationModule
     .bind(DI_SYMBOLS.ISignInUseCase)
     .toHigherOrderFunction(signInUseCase, [
+      DI_SYMBOLS.IInstrumentationService,
+      DI_SYMBOLS.IUsersRepository,
+      DI_SYMBOLS.IAuthenticationService,
+    ]);
+
+  authenticationModule
+    .bind(DI_SYMBOLS.ISignInWithGithubUseCase)
+    .toHigherOrderFunction(signInWithGithubUseCase, [
       DI_SYMBOLS.IInstrumentationService,
       DI_SYMBOLS.IUsersRepository,
       DI_SYMBOLS.IAuthenticationService,
