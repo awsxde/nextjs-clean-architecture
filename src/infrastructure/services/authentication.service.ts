@@ -1,3 +1,4 @@
+import 'server-only';
 import { generateIdFromEntropySize, Lucia } from 'lucia';
 import { compare } from 'bcrypt-ts';
 

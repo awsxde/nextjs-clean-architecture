@@ -4,6 +4,13 @@ import { withSentryConfig } from '@sentry/nextjs';
 const nextConfig = {
   output: 'standalone',
   turbopack: {},
+  experimental: {
+    serverComponentsExternalPackages: [
+      '@libsql/client',
+      'drizzle-orm',
+      '@lucia-auth/adapter-drizzle',
+    ],
+  },
 };
 
 export default withSentryConfig(nextConfig, {
