@@ -9,6 +9,7 @@ import { signUpUseCase } from '@/src/application/use-cases/auth/sign-up.use-case
 import { signOutUseCase } from '@/src/application/use-cases/auth/sign-out.use-case';
 
 import { signInController } from '@/src/interface-adapters/controllers/auth/sign-in.controller';
+import { signInWithGithubController } from '@/src/interface-adapters/controllers/auth/sign-in-with-github.controller';
 import { signOutController } from '@/src/interface-adapters/controllers/auth/sign-out.controller';
 import { signUpController } from '@/src/interface-adapters/controllers/auth/sign-up.controller';
 
@@ -66,6 +67,13 @@ export function createAuthenticationModule() {
     .toHigherOrderFunction(signInController, [
       DI_SYMBOLS.IInstrumentationService,
       DI_SYMBOLS.ISignInUseCase,
+    ]);
+
+  authenticationModule
+    .bind(DI_SYMBOLS.ISignInWithGithubController)
+    .toHigherOrderFunction(signInWithGithubController, [
+      DI_SYMBOLS.IInstrumentationService,
+      DI_SYMBOLS.ISignInWithGithubUseCase,
     ]);
 
   authenticationModule
