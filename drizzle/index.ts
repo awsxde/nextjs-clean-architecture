@@ -1,5 +1,4 @@
-import 'server-only';
-import { createClient, ResultSet } from '@libsql/client/web';
+import { createClient, ResultSet } from '@libsql/client';
 import { DrizzleSQLiteAdapter } from '@lucia-auth/adapter-drizzle';
 import { ExtractTablesWithRelations } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/libsql';
