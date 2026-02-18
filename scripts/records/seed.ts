@@ -13,6 +13,7 @@ async function seed() {
     const signUpUseCase = getInjection('ISignUpUseCase');
     try {
       await signUpUseCase({
+        email: 'one@gmail.com',
         username: 'one',
         password: 'password-one',
       });

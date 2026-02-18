@@ -10,6 +10,7 @@ async function reset() {
     const signUpUseCase = getInjection('ISignUpUseCase');
     try {
       await signUpUseCase({
+        email: 'one@gmail.com',
         username: 'one',
         password: 'password-one',
       });
