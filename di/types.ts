@@ -19,6 +19,7 @@ import { ISignOutUseCase } from '@/src/application/use-cases/auth/sign-out.use-c
 
 import { ISignInController } from '@/src/interface-adapters/controllers/auth/sign-in.controller';
 import { ISignInWithGithubController } from '@/src/interface-adapters/controllers/auth/sign-in-with-github.controller';
+import { ISignInWithGoogleController } from '@/src/interface-adapters/controllers/auth/sign-in-with-google.controller';
 import { ISignOutController } from '@/src/interface-adapters/controllers/auth/sign-out.controller';
 import { ISignUpController } from '@/src/interface-adapters/controllers/auth/sign-up.controller';
 import { ICreateRecordController } from '@/src/interface-adapters/controllers/records/create-record.controller';
@@ -53,6 +54,7 @@ export const DI_SYMBOLS = {
   // Controllers
   ISignInController: Symbol.for('ISignInController'),
   ISignInWithGithubController: Symbol.for('ISignInWithGithubController'),
+  ISignInWithGoogleController: Symbol.for('ISignInWithGoogleController'),
   ISignOutController: Symbol.for('ISignOutController'),
   ISignUpController: Symbol.for('ISignUpController'),
   ICreateRecordController: Symbol.for('ICreateRecordController'),
@@ -88,6 +90,7 @@ export interface DI_RETURN_TYPES {
   // Controllers
   ISignInController: ISignInController;
   ISignInWithGithubController: ISignInWithGithubController;
+  ISignInWithGoogleController: ISignInWithGoogleController;
   ISignOutController: ISignOutController;
   ISignUpController: ISignUpController;
   ICreateRecordController: ICreateRecordController;

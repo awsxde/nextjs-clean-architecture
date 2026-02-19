@@ -11,6 +11,7 @@ import { signOutUseCase } from '@/src/application/use-cases/auth/sign-out.use-ca
 
 import { signInController } from '@/src/interface-adapters/controllers/auth/sign-in.controller';
 import { signInWithGithubController } from '@/src/interface-adapters/controllers/auth/sign-in-with-github.controller';
+import { signInWithGoogleController } from '@/src/interface-adapters/controllers/auth/sign-in-with-google.controller';
 import { signOutController } from '@/src/interface-adapters/controllers/auth/sign-out.controller';
 import { signUpController } from '@/src/interface-adapters/controllers/auth/sign-up.controller';
 
@@ -83,6 +84,13 @@ export function createAuthenticationModule() {
     .toHigherOrderFunction(signInWithGithubController, [
       DI_SYMBOLS.IInstrumentationService,
       DI_SYMBOLS.ISignInWithGithubUseCase,
+    ]);
+
+  authenticationModule
+    .bind(DI_SYMBOLS.ISignInWithGoogleController)
+    .toHigherOrderFunction(signInWithGoogleController, [
+      DI_SYMBOLS.IInstrumentationService,
+      DI_SYMBOLS.ISignInWithGoogleUseCase,
     ]);
 
   authenticationModule
