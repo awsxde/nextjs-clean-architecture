@@ -13,6 +13,7 @@ import { IGetRecordsForUserUseCase } from '@/src/application/use-cases/records/g
 import { IGetRecordUseCase } from '@/src/application/use-cases/records/get-record.use-case';
 import { ISignInUseCase } from '@/src/application/use-cases/auth/sign-in.use-case';
 import { ISignInWithGithubUseCase } from '@/src/application/use-cases/auth/sign-in-with-github.use-case';
+import { ISignInWithGoogleUseCase } from '@/src/application/use-cases/auth/sign-in-with-google.use-case';
 import { ISignUpUseCase } from '@/src/application/use-cases/auth/sign-up.use-case';
 import { ISignOutUseCase } from '@/src/application/use-cases/auth/sign-out.use-case';
 
@@ -45,6 +46,7 @@ export const DI_SYMBOLS = {
   IGetRecordUseCase: Symbol.for('IGetRecordUseCase'),
   ISignInUseCase: Symbol.for('ISignInUseCase'),
   ISignInWithGithubUseCase: Symbol.for('ISignInWithGithubUseCase'),
+  ISignInWithGoogleUseCase: Symbol.for('ISignInWithGoogleUseCase'),
   ISignOutUseCase: Symbol.for('ISignOutUseCase'),
   ISignUpUseCase: Symbol.for('ISignUpUseCase'),
 
@@ -79,6 +81,7 @@ export interface DI_RETURN_TYPES {
   IGetRecordUseCase: IGetRecordUseCase;
   ISignInUseCase: ISignInUseCase;
   ISignInWithGithubUseCase: ISignInWithGithubUseCase;
+  ISignInWithGoogleUseCase: ISignInWithGoogleUseCase;
   ISignOutUseCase: ISignOutUseCase;
   ISignUpUseCase: ISignUpUseCase;
 
