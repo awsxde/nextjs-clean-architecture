@@ -22,7 +22,7 @@ export function DataTableToolbar<TData>({
 
   return (
     <div className="flex items-center justify-between">
-      <div className="flex flex-1 items-center space-x-2">
+      <div className="hidden md:flex md:flex-1 md:items-center md:space-x-2">
         <Input
           placeholder="Filter tasks..."
           value={
@@ -61,7 +61,7 @@ export function DataTableToolbar<TData>({
       <Link href="/dashboard/record/new">
         <Button variant="outline" size="sm">
           <IconPlus />
-          <span className="hidden lg:inline">Add Record</span>
+          <span className="lg:inline">Add Record</span>
         </Button>
       </Link>
     </div>
