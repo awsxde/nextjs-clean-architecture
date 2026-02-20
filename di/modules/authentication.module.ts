@@ -4,10 +4,14 @@ import { AuthenticationService } from '@/src/infrastructure/services/authenticat
 import { MockAuthenticationService } from '@/src/infrastructure/services/authentication.service.mock';
 
 import { signInUseCase } from '@/src/application/use-cases/auth/sign-in.use-case';
+import { signInWithGithubUseCase } from '@/src/application/use-cases/auth/sign-in-with-github.use-case';
+import { signInWithGoogleUseCase } from '@/src/application/use-cases/auth/sign-in-with-google.use-case';
 import { signUpUseCase } from '@/src/application/use-cases/auth/sign-up.use-case';
 import { signOutUseCase } from '@/src/application/use-cases/auth/sign-out.use-case';
 
 import { signInController } from '@/src/interface-adapters/controllers/auth/sign-in.controller';
+import { signInWithGithubController } from '@/src/interface-adapters/controllers/auth/sign-in-with-github.controller';
+import { signInWithGoogleController } from '@/src/interface-adapters/controllers/auth/sign-in-with-google.controller';
 import { signOutController } from '@/src/interface-adapters/controllers/auth/sign-out.controller';
 import { signUpController } from '@/src/interface-adapters/controllers/auth/sign-up.controller';
 
@@ -38,6 +42,22 @@ export function createAuthenticationModule() {
     ]);
 
   authenticationModule
+    .bind(DI_SYMBOLS.ISignInWithGithubUseCase)
+    .toHigherOrderFunction(signInWithGithubUseCase, [
+      DI_SYMBOLS.IInstrumentationService,
+      DI_SYMBOLS.IUsersRepository,
+      DI_SYMBOLS.IAuthenticationService,
+    ]);
+
+  authenticationModule
+    .bind(DI_SYMBOLS.ISignInWithGoogleUseCase)
+    .toHigherOrderFunction(signInWithGoogleUseCase, [
+      DI_SYMBOLS.IInstrumentationService,
+      DI_SYMBOLS.IUsersRepository,
+      DI_SYMBOLS.IAuthenticationService,
+    ]);
+
+  authenticationModule
     .bind(DI_SYMBOLS.ISignOutUseCase)
     .toHigherOrderFunction(signOutUseCase, [
       DI_SYMBOLS.IInstrumentationService,
@@ -57,6 +77,20 @@ export function createAuthenticationModule() {
     .toHigherOrderFunction(signInController, [
       DI_SYMBOLS.IInstrumentationService,
       DI_SYMBOLS.ISignInUseCase,
+    ]);
+
+  authenticationModule
+    .bind(DI_SYMBOLS.ISignInWithGithubController)
+    .toHigherOrderFunction(signInWithGithubController, [
+      DI_SYMBOLS.IInstrumentationService,
+      DI_SYMBOLS.ISignInWithGithubUseCase,
+    ]);
+
+  authenticationModule
+    .bind(DI_SYMBOLS.ISignInWithGoogleController)
+    .toHigherOrderFunction(signInWithGoogleController, [
+      DI_SYMBOLS.IInstrumentationService,
+      DI_SYMBOLS.ISignInWithGoogleUseCase,
     ]);
 
   authenticationModule

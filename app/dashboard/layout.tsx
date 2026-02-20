@@ -23,9 +23,9 @@ export default async function DashboardLayout({
     const { user } = await authService.validateSession(sessionId);
 
     const safeUser = {
-      name: user.username.split('@')[0] || 'User',
-      email: user.username,
-      avatar: '',
+      username: user.username,
+      email: user.email,
+      avatar: `https://api.dicebear.com/9.x/identicon/svg?seed=${encodeURIComponent(user.email)}`,
     };
 
     return (

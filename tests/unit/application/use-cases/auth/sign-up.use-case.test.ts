@@ -9,6 +9,7 @@ const signUpUseCase = getInjection('ISignUpUseCase');
 // https://www.epicweb.dev/talks/how-to-write-better-test-names
 it('returns session and cookie', async () => {
   const result = await signUpUseCase({
+    email: 'new@gmail.com',
     username: 'new',
     password: 'password-new',
   });
@@ -19,6 +20,10 @@ it('returns session and cookie', async () => {
 
 it('throws for invalid input', async () => {
   await expect(() =>
-    signUpUseCase({ username: 'one', password: 'doesntmatter' })
+    signUpUseCase({
+      email: '',
+      username: 'one',
+      password: 'doesntmatter',
+    })
   ).rejects.toBeInstanceOf(AuthenticationError);
 });

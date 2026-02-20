@@ -17,6 +17,7 @@ export const signUpUseCase =
   (input: {
     username: string;
     password: string;
+    email: string;
   }): Promise<{
     session: Session;
     cookie: Cookie;
@@ -25,11 +26,18 @@ export const signUpUseCase =
     return instrumentationService.startSpan(
       { name: 'signUp Use Case', op: 'function' },
       async () => {
-        const existingUser = await usersRepository.getUserByUsername(
+        const existingUserByUsername = await usersRepository.getUserByUsername(
           input.username
         );
-        if (existingUser) {
+        if (existingUserByUsername) {
           throw new AuthenticationError('Username taken');
+        }
+
+        const existingUserByEmail = await usersRepository.getUserByEmail(
+          input.email
+        );
+        if (existingUserByEmail) {
+          throw new AuthenticationError('Email already in use');
         }
 
         const userId = authenticationService.generateUserId();
@@ -37,6 +45,7 @@ export const signUpUseCase =
         const newUser = await usersRepository.createUser({
           id: userId,
           username: input.username,
+          email: input.email,
           password: input.password,
         });
 

@@ -7,6 +7,7 @@ import { ISignUpUseCase } from '@/src/application/use-cases/auth/sign-up.use-cas
 const inputSchema = z
   .object({
     username: z.string().min(3).max(31),
+    email: z.string().email(),
     password: z.string().min(6).max(31),
     confirm_password: z.string().min(6).max(31),
   })
@@ -20,7 +21,7 @@ const inputSchema = z
       ctx.addIssue({
         code: 'custom',
         message: 'The passwords did not match',
-        path: ['confirmPassword'],
+        path: ['confirm_password'],
       });
     }
   });

@@ -20,6 +20,7 @@ export async function signUp(formData: FormData) {
     async () => {
       const cookieStore = await cookies();
       const username = formData.get('username')?.toString();
+      const email = formData.get('email')?.toString(); // added email
       const password = formData.get('password')?.toString();
       const confirmPassword = formData.get('confirm_password')?.toString();
 
@@ -28,6 +29,7 @@ export async function signUp(formData: FormData) {
         const signUpController = getInjection('ISignUpController');
         const { cookie } = await signUpController({
           username,
+          email,
           password,
           confirm_password: confirmPassword,
         });
@@ -36,7 +38,7 @@ export async function signUp(formData: FormData) {
         if (err instanceof InputParseError) {
           return {
             error:
-              'Invalid data. Make sure the Password and Confirm Password match.',
+              'Invalid data. Make sure all fields are filled correctly and passwords match.',
           };
         }
         if (err instanceof AuthenticationError) {

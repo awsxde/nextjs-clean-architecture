@@ -12,10 +12,14 @@ import { IDeleteRecordUseCase } from '@/src/application/use-cases/records/delete
 import { IGetRecordsForUserUseCase } from '@/src/application/use-cases/records/get-records-for-user.use-case';
 import { IGetRecordUseCase } from '@/src/application/use-cases/records/get-record.use-case';
 import { ISignInUseCase } from '@/src/application/use-cases/auth/sign-in.use-case';
+import { ISignInWithGithubUseCase } from '@/src/application/use-cases/auth/sign-in-with-github.use-case';
+import { ISignInWithGoogleUseCase } from '@/src/application/use-cases/auth/sign-in-with-google.use-case';
 import { ISignUpUseCase } from '@/src/application/use-cases/auth/sign-up.use-case';
 import { ISignOutUseCase } from '@/src/application/use-cases/auth/sign-out.use-case';
 
 import { ISignInController } from '@/src/interface-adapters/controllers/auth/sign-in.controller';
+import { ISignInWithGithubController } from '@/src/interface-adapters/controllers/auth/sign-in-with-github.controller';
+import { ISignInWithGoogleController } from '@/src/interface-adapters/controllers/auth/sign-in-with-google.controller';
 import { ISignOutController } from '@/src/interface-adapters/controllers/auth/sign-out.controller';
 import { ISignUpController } from '@/src/interface-adapters/controllers/auth/sign-up.controller';
 import { ICreateRecordController } from '@/src/interface-adapters/controllers/records/create-record.controller';
@@ -42,11 +46,15 @@ export const DI_SYMBOLS = {
   IGetRecordsForUserUseCase: Symbol.for('IGetRecordsForUserUseCase'),
   IGetRecordUseCase: Symbol.for('IGetRecordUseCase'),
   ISignInUseCase: Symbol.for('ISignInUseCase'),
+  ISignInWithGithubUseCase: Symbol.for('ISignInWithGithubUseCase'),
+  ISignInWithGoogleUseCase: Symbol.for('ISignInWithGoogleUseCase'),
   ISignOutUseCase: Symbol.for('ISignOutUseCase'),
   ISignUpUseCase: Symbol.for('ISignUpUseCase'),
 
   // Controllers
   ISignInController: Symbol.for('ISignInController'),
+  ISignInWithGithubController: Symbol.for('ISignInWithGithubController'),
+  ISignInWithGoogleController: Symbol.for('ISignInWithGoogleController'),
   ISignOutController: Symbol.for('ISignOutController'),
   ISignUpController: Symbol.for('ISignUpController'),
   ICreateRecordController: Symbol.for('ICreateRecordController'),
@@ -74,11 +82,15 @@ export interface DI_RETURN_TYPES {
   IGetRecordsForUserUseCase: IGetRecordsForUserUseCase;
   IGetRecordUseCase: IGetRecordUseCase;
   ISignInUseCase: ISignInUseCase;
+  ISignInWithGithubUseCase: ISignInWithGithubUseCase;
+  ISignInWithGoogleUseCase: ISignInWithGoogleUseCase;
   ISignOutUseCase: ISignOutUseCase;
   ISignUpUseCase: ISignUpUseCase;
 
   // Controllers
   ISignInController: ISignInController;
+  ISignInWithGithubController: ISignInWithGithubController;
+  ISignInWithGoogleController: ISignInWithGoogleController;
   ISignOutController: ISignOutController;
   ISignUpController: ISignUpController;
   ICreateRecordController: ICreateRecordController;
