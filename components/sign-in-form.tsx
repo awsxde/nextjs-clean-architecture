@@ -38,14 +38,14 @@ export function SignInForm({
       <Card>
         <CardHeader className="text-center">
           <CardTitle className="text-xl">Welcome back</CardTitle>
-          <CardDescription>
+          {/* <CardDescription>
             Sign in with your GitHub or Google account
-          </CardDescription>
+          </CardDescription> */}
         </CardHeader>
         <CardContent>
           <form onSubmit={onSubmit}>
             <FieldGroup>
-              <Field>
+              {/* <Field>
                 <Button
                   variant="outline"
                   type="button"
@@ -68,7 +68,7 @@ export function SignInForm({
 
               <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
                 Or continue with
-              </FieldSeparator>
+              </FieldSeparator> */}
 
               {/* Error message */}
               {error && <p className="text-sm text-destructive">{error}</p>}

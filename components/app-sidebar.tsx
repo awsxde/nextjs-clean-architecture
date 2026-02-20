@@ -18,21 +18,21 @@ import Image from 'next/image';
 
 const data = {
   navMain: [
-    {
-      title: 'Dashboard',
-      url: '/dashboard',
-      icon: IconDashboard,
-    },
+    // {
+    //   title: 'Dashboard',
+    //   url: '/dashboard',
+    //   icon: IconDashboard,
+    // },
     {
       title: 'Record',
       url: '/dashboard/record',
       icon: IconReceipt,
     },
-    {
-      title: 'Analytics',
-      url: '/dashboard/analytics',
-      icon: IconChartBar,
-    },
+    // {
+    //   title: 'Analytics',
+    //   url: '/dashboard/analytics',
+    //   icon: IconChartBar,
+    // },
   ],
 };
 
