@@ -16,6 +16,7 @@ import { ISignInWithGithubUseCase } from '@/src/application/use-cases/auth/sign-
 import { ISignInWithGoogleUseCase } from '@/src/application/use-cases/auth/sign-in-with-google.use-case';
 import { ISignUpUseCase } from '@/src/application/use-cases/auth/sign-up.use-case';
 import { ISignOutUseCase } from '@/src/application/use-cases/auth/sign-out.use-case';
+import { IUpdateUserUseCase } from '@/src/application/use-cases/auth/update-user.use-case';
 
 import { ISignInController } from '@/src/interface-adapters/controllers/auth/sign-in.controller';
 import { ISignInWithGithubController } from '@/src/interface-adapters/controllers/auth/sign-in-with-github.controller';
@@ -50,6 +51,7 @@ export const DI_SYMBOLS = {
   ISignInWithGoogleUseCase: Symbol.for('ISignInWithGoogleUseCase'),
   ISignOutUseCase: Symbol.for('ISignOutUseCase'),
   ISignUpUseCase: Symbol.for('ISignUpUseCase'),
+  IUpdateUserUseCase: Symbol.for('IUpdateUserUseCase'),
 
   // Controllers
   ISignInController: Symbol.for('ISignInController'),
@@ -86,6 +88,7 @@ export interface DI_RETURN_TYPES {
   ISignInWithGoogleUseCase: ISignInWithGoogleUseCase;
   ISignOutUseCase: ISignOutUseCase;
   ISignUpUseCase: ISignUpUseCase;
+  IUpdateUserUseCase: IUpdateUserUseCase;
 
   // Controllers
   ISignInController: ISignInController;
