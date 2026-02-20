@@ -30,13 +30,36 @@ export async function GET(request: Request) {
       storedCodeVerifier
     );
 
+    // Fetch Google user info
     const userInfoResponse = await fetch(
       'https://openidconnect.googleapis.com/v1/userinfo',
       {
         headers: { Authorization: `Bearer ${tokens.accessToken}` },
       }
     );
+
+    if (!userInfoResponse.ok) {
+      const errorText = await userInfoResponse.text();
+      console.error(
+        'Google userinfo fetch failed:',
+        userInfoResponse.status,
+        errorText
+      );
+      return new Response('Failed to fetch user info from Google', {
+        status: 500,
+      });
+    }
+
     const googleUser = await userInfoResponse.json();
+
+    // Validate that required fields exist
+    if (!googleUser.sub || !googleUser.email || !googleUser.name) {
+      console.error(
+        'Missing required user info fields from Google',
+        googleUser
+      );
+      return new Response('Incomplete user info from Google', { status: 500 });
+    }
 
     const cookie = await signInWithGoogleController({
       googleId: googleUser.sub,
@@ -53,10 +76,10 @@ export async function GET(request: Request) {
       headers: { Location: '/dashboard' },
     });
   } catch (e) {
+    console.error('Google OAuth callback error:', e);
     if (e instanceof OAuth2RequestError) {
       return new Response(null, { status: 400 });
     }
-    console.error(e);
     return new Response(null, { status: 500 });
   }
 }
