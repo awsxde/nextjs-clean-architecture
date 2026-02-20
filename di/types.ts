@@ -23,6 +23,7 @@ import { ISignInWithGithubController } from '@/src/interface-adapters/controller
 import { ISignInWithGoogleController } from '@/src/interface-adapters/controllers/auth/sign-in-with-google.controller';
 import { ISignOutController } from '@/src/interface-adapters/controllers/auth/sign-out.controller';
 import { ISignUpController } from '@/src/interface-adapters/controllers/auth/sign-up.controller';
+import { IUpdateUserController } from '@/src/interface-adapters/controllers/auth/update-user.controller';
 import { ICreateRecordController } from '@/src/interface-adapters/controllers/records/create-record.controller';
 import { IUpdateRecordController } from '@/src/interface-adapters/controllers/records/update-record.controller';
 import { IDeleteRecordController } from '@/src/interface-adapters/controllers/records/delete-record.controller';
@@ -59,6 +60,7 @@ export const DI_SYMBOLS = {
   ISignInWithGoogleController: Symbol.for('ISignInWithGoogleController'),
   ISignOutController: Symbol.for('ISignOutController'),
   ISignUpController: Symbol.for('ISignUpController'),
+  IUpdateUserController: Symbol.for('IUpdateUserController'),
   ICreateRecordController: Symbol.for('ICreateRecordController'),
   IUpdateRecordController: Symbol.for('IUpdateRecordController'),
   IDeleteRecordController: Symbol.for('IDeleteRecordController'),
@@ -96,6 +98,7 @@ export interface DI_RETURN_TYPES {
   ISignInWithGoogleController: ISignInWithGoogleController;
   ISignOutController: ISignOutController;
   ISignUpController: ISignUpController;
+  IUpdateUserController: IUpdateUserController;
   ICreateRecordController: ICreateRecordController;
   IUpdateRecordController: IUpdateRecordController;
   IDeleteRecordController: IDeleteRecordController;

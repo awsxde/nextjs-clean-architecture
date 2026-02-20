@@ -15,6 +15,7 @@ import { signInWithGithubController } from '@/src/interface-adapters/controllers
 import { signInWithGoogleController } from '@/src/interface-adapters/controllers/auth/sign-in-with-google.controller';
 import { signOutController } from '@/src/interface-adapters/controllers/auth/sign-out.controller';
 import { signUpController } from '@/src/interface-adapters/controllers/auth/sign-up.controller';
+import { updateUserController } from '@/src/interface-adapters/controllers/auth/update-user.controller';
 
 import { DI_SYMBOLS } from '@/di/types';
 
@@ -114,6 +115,15 @@ export function createAuthenticationModule() {
     .toHigherOrderFunction(signUpController, [
       DI_SYMBOLS.IInstrumentationService,
       DI_SYMBOLS.ISignUpUseCase,
+    ]);
+
+  authenticationModule
+    .bind(DI_SYMBOLS.IUpdateUserController)
+    .toHigherOrderFunction(updateUserController, [
+      DI_SYMBOLS.IInstrumentationService,
+      DI_SYMBOLS.IAuthenticationService,
+      DI_SYMBOLS.ITransactionManagerService,
+      DI_SYMBOLS.IUpdateUserUseCase,
     ]);
 
   return authenticationModule;
