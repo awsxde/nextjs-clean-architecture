@@ -58,6 +58,7 @@ export const signUpUseCase =
           user: {
             id: newUser.id,
             username: newUser.username,
+            email: newUser.email,
           },
         };
       }
