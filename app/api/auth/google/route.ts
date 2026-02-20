@@ -6,7 +6,11 @@ export async function GET() {
   const state = generateState();
   const codeVerifier = generateCodeVerifier();
 
-  const url = await google.createAuthorizationURL(state, codeVerifier, []);
+  const url = await google.createAuthorizationURL(state, codeVerifier, [
+    'openid',
+    'profile',
+    'email',
+  ]);
 
   const cookieStore = await cookies();
   cookieStore.set('google_oauth_state', state, {
